@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/memisswanjiku/static/css/main.c7b400ee.css",
+    "main.js": "/memisswanjiku/static/js/main.0fa58c3c.js",
+    "static/js/787.47382021.chunk.js": "/memisswanjiku/static/js/787.47382021.chunk.js",
+    "static/media/gra.jpg": "/memisswanjiku/static/media/gra.7b0c2808ba42b7f51507.jpg",
+    "static/media/logo.svg": "/memisswanjiku/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/memisswanjiku/index.html",
+    "main.c7b400ee.css.map": "/memisswanjiku/static/css/main.c7b400ee.css.map",
+    "main.0fa58c3c.js.map": "/memisswanjiku/static/js/main.0fa58c3c.js.map",
+    "787.47382021.chunk.js.map": "/memisswanjiku/static/js/787.47382021.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c7b400ee.css",
+    "static/js/main.0fa58c3c.js"
+  ]
+}
