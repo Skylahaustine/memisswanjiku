@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Col, Progress, Row } from "antd";
-import Picha from "./Components/Timer/Assets/Images/gra.jpg";
+
 
 const Timer = () => {
   const [timeRemaining, setTimeRemaining] = useState({
@@ -48,13 +48,6 @@ const Timer = () => {
       );
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-      console.log("years", years);
-      console.log("months", months);
-      console.log("weeks", weeks);
-      console.log("days", days);
-      console.log("hours", hours);
-      console.log("minutes", minutes);
-      console.log("seconds", seconds);
 
       setTimeRemaining({
         years,
@@ -71,21 +64,19 @@ const Timer = () => {
   }, []);
   const style = {
     textAlign: "center",
-    //   , backgroundImage: `url(${Picha})`,
-    //   backgroundSize: 'cover',
   };
 
   return (
     <div style={style}>
-      <h1>Time Bomb😂😂</h1>
-
+      <h1>Tik Tak😂😂</h1>
+      Life can be whatever we want it to be.
       <Row justify={"center"} gutter={12}>
         {timeRemaining.years > 0 && (
           <Col lg={4} md={6} sm={12}>
             <div style={{ margin: "16px 0" }}>
               <Progress
                 type="circle"
-                percent={Math.round((timeRemaining.years * 100)/12 )}
+                percent={Math.round((timeRemaining.years * 100) / 12)}
                 format={() => `${timeRemaining.years} Years`}
               />
             </div>
@@ -98,7 +89,7 @@ const Timer = () => {
                 type="circle"
                 percent={timeRemaining.months}
                 format={() => `${timeRemaining.months} Months`}
-                strokeColor={ "#1b6535" }
+                strokeColor={"#1b6535"}
               />
             </div>
           </Col>
@@ -108,9 +99,9 @@ const Timer = () => {
             <div style={{ margin: "16px 0" }}>
               <Progress
                 type="circle"
-                percent={Math.round((timeRemaining.weeks * 100)/4 )}
+                percent={Math.round((timeRemaining.weeks * 100) / 4)}
                 format={() => `${timeRemaining.weeks} Weeks`}
-                strokeColor={ "#77c593" }
+                strokeColor={"#77c593"}
               />
             </div>
           </Col>
@@ -120,9 +111,9 @@ const Timer = () => {
             <div style={{ margin: "16px 0" }}>
               <Progress
                 type="circle"
-                percent={Math.round((timeRemaining.days * 100)/31 )}
+                percent={Math.round((timeRemaining.days * 100) / 31)}
                 format={() => `${timeRemaining.days} Days`}
-                strokeColor={ "#3a6b35" }
+                strokeColor={"#3a6b35"}
               />
             </div>
           </Col>
@@ -132,9 +123,9 @@ const Timer = () => {
             <div style={{ margin: "16px 0" }}>
               <Progress
                 type="circle"
-                percent={Math.round((timeRemaining.hours * 100)/24 )}
+                percent={Math.round((timeRemaining.hours * 100) / 24)}
                 format={() => `${timeRemaining.hours} Hours`}
-                strokeColor={ "pink" }
+                strokeColor={"pink"}
               />
             </div>
           </Col>
@@ -144,9 +135,9 @@ const Timer = () => {
             <div style={{ margin: "16px 0" }}>
               <Progress
                 type="circle"
-                percent={Math.round((timeRemaining.minutes * 100)/60 )}
+                percent={Math.round((timeRemaining.minutes * 100) / 60)}
                 format={() => `${timeRemaining.minutes} Min`}
-                strokeColor={ "purple" }
+                strokeColor={"purple"}
               />
             </div>
           </Col>
@@ -156,11 +147,10 @@ const Timer = () => {
           <div style={{ margin: "16px 0" }}>
             <Progress
               type="circle"
-              percent={ Math.round((timeRemaining.seconds * 100) / 60)}
+              percent={Math.round((timeRemaining.seconds * 100) / 60)}
               format={() => `${timeRemaining.seconds} Sec`}
-            //   strokeColor={{ "0%": "#108ee9", "100%": "#87d068" }}
+              //   strokeColor={{ "0%": "#108ee9", "100%": "#87d068" }}
               strokeColor={{ "0%": "#2eb82e", "100%": "green" }}
-
             />
           </div>
         </Col>
