@@ -16,7 +16,7 @@ const Timer = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       const currentDate = new Date();
-      const targetDate = new Date("2023-05-11T23:59:59");
+      const targetDate = new Date("2023-06-11T23:59:59");
       const diff = targetDate - currentDate;
 
       if (diff <= 0) {
