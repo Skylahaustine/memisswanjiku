@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Col, Progress, Row } from "antd";
-
+import background from "./Components/Timer/Assets/Images/uss.jpg";
 
 const Timer = () => {
   const [timeRemaining, setTimeRemaining] = useState({
@@ -16,7 +16,7 @@ const Timer = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       const currentDate = new Date();
-      const targetDate = new Date("2023-06-11T23:59:59");
+      const targetDate = new Date("2023-06-18T23:59:59");
       const diff = targetDate - currentDate;
 
       if (diff <= 0) {
@@ -63,13 +63,19 @@ const Timer = () => {
     return () => clearInterval(intervalId);
   }, []);
   const style = {
+    width: "100vw",
+    height: "100vh",
     textAlign: "center",
+    backgroundImage: `url(${background})`,
+
+    backgroundSize: "cover",
+    backgroundPosition: "center",
   };
 
   return (
     <div style={style}>
-      <h1>Tik Tak😂😂</h1>
-      Life can be whatever we want it to be.
+      <h1>Haiya😂😂👀</h1>
+      Kuumbe siku hukimbia.
       <Row justify={"center"} gutter={12}>
         {timeRemaining.years > 0 && (
           <Col lg={4} md={6} sm={12}>
