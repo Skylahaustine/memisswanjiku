@@ -16,7 +16,7 @@ const Timer = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       const currentDate = new Date();
-      const targetDate = new Date("2023-06-18T23:59:59");
+      const targetDate = new Date("2023-12-31T23:59:59");
       const diff = targetDate - currentDate;
 
       if (diff <= 0) {
@@ -74,8 +74,8 @@ const Timer = () => {
 
   return (
     <div style={style}>
-      <h1>Haiya😂😂👀</h1>
-      Kuumbe siku hukimbia.
+      <h1>Umekujia nini na timer ya exam iliisha😂😂👀</h1>
+      Hii ni ya end of year sasa. Or uniambie tueke timer ya nini.
       <Row justify={"center"} gutter={12}>
         {timeRemaining.years > 0 && (
           <Col lg={4} md={6} sm={12}>
