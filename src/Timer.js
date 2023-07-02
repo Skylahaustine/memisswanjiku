@@ -74,7 +74,7 @@ const Timer = () => {
 
   return (
     <div style={style}>
-      <h1>Umekujia nini na timer ya exam iliisha😂😂👀</h1>
+      <h1>Babe Umekujia nini na timer ya exam iliisha😂😂👀</h1>
       Hii ni ya end of year sasa. Or uniambie tueke timer ya nini.
       <Row justify={"center"} gutter={12}>
         {timeRemaining.years > 0 && (
