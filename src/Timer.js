@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Col, Progress, Row } from "antd";
-import background from "./Components/Timer/Assets/Images/uss.jpg";
+import React, { useState, useEffect } from 'react';
+import { Button, Col, Progress, Row, Calendar, Radio } from 'antd';
+import { CarOutlined } from '@ant-design/icons';
+import background from './Components/Timer/Assets/Images/uss.jpg';
+import { workDays } from './Components/Timer/Assets/Images/dates';
 
 const Timer = () => {
   const [timeRemaining, setTimeRemaining] = useState({
@@ -12,11 +14,13 @@ const Timer = () => {
     minutes: 0,
     seconds: 0,
   });
+  const [view, setView] = useState('Timer');
+  const [value, setValue] = useState([]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       const currentDate = new Date();
-      const targetDate = new Date("2023-12-31T23:59:59");
+      const targetDate = new Date('2023-11-29T23:59:59');
       const diff = targetDate - currentDate;
 
       if (diff <= 0) {
@@ -63,104 +67,156 @@ const Timer = () => {
     return () => clearInterval(intervalId);
   }, []);
   const style = {
-    width: "100vw",
-    height: "100vh",
-    textAlign: "center",
+    width: '100vw',
+    height: '100vh',
+    textAlign: 'center',
     backgroundImage: `url(${background})`,
 
-    backgroundSize: "cover",
-    backgroundPosition: "center",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
   };
+  const calendarStyle = {
+    backgroundImage: `url(${background})`,
+    margin: '3px',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  };
+  const dateCellRender = (value) => {
+    const formattedDate = value.format('YYYY-MM-DD');
+    const currentDate = new Date().toISOString().split('T')[0]; // Get the current date in ISO format (YYYY-MM-DD)
 
+    if (workDays.includes(formattedDate) && formattedDate >= currentDate) {
+      return (
+        <Button
+          style={{
+            backgroundColor: 'rgb(142, 36, 170)',
+            borderColor: 'rgb(142, 36, 170)',
+            float: 'right',
+          }}
+          size='small'
+          type='primary'
+          shape='circle'
+          icon={<CarOutlined />}
+        />
+      );
+    }
+
+    return null;
+  };
+  const handleView = (e) => {
+    setView(e.target.value);
+  };
+  const onSelect = (val) => {
+    let date = val.format('YYYY-MM-DD');
+    setValue([...value, date]);
+  };
   return (
-    <div style={style}>
-      <h1>Babe Umekujia nini na timer ya exam iliisha😂😂👀</h1>
-      Hii ni ya end of year sasa. Or uniambie tueke timer ya nini.
-      <Row justify={"center"} gutter={12}>
-        {timeRemaining.years > 0 && (
-          <Col lg={4} md={6} sm={12}>
-            <div style={{ margin: "16px 0" }}>
-              <Progress
-                type="circle"
-                percent={Math.round((timeRemaining.years * 100) / 12)}
-                format={() => `${timeRemaining.years} Years`}
-              />
-            </div>
-          </Col>
-        )}
-        {timeRemaining.months > 0 && (
-          <Col lg={4} md={6} sm={12}>
-            <div style={{ margin: "16px 0" }}>
-              <Progress
-                type="circle"
-                percent={timeRemaining.months}
-                format={() => `${timeRemaining.months} Months`}
-                strokeColor={"#1b6535"}
-              />
-            </div>
-          </Col>
-        )}
-        {timeRemaining.weeks > 0 && (
-          <Col lg={4} md={6} sm={12}>
-            <div style={{ margin: "16px 0" }}>
-              <Progress
-                type="circle"
-                percent={Math.round((timeRemaining.weeks * 100) / 4)}
-                format={() => `${timeRemaining.weeks} Weeks`}
-                strokeColor={"#77c593"}
-              />
-            </div>
-          </Col>
-        )}
-        {timeRemaining.days > 0 && (
-          <Col lg={4} md={6} sm={12}>
-            <div style={{ margin: "16px 0" }}>
-              <Progress
-                type="circle"
-                percent={Math.round((timeRemaining.days * 100) / 31)}
-                format={() => `${timeRemaining.days} Days`}
-                strokeColor={"#3a6b35"}
-              />
-            </div>
-          </Col>
-        )}
-        {timeRemaining.hours > 0 && (
-          <Col lg={4} md={6} sm={12}>
-            <div style={{ margin: "16px 0" }}>
-              <Progress
-                type="circle"
-                percent={Math.round((timeRemaining.hours * 100) / 24)}
-                format={() => `${timeRemaining.hours} Hours`}
-                strokeColor={"pink"}
-              />
-            </div>
-          </Col>
-        )}
-        {timeRemaining.minutes > 0 && (
-          <Col lg={4} md={6} sm={12}>
-            <div style={{ margin: "16px 0" }}>
-              <Progress
-                type="circle"
-                percent={Math.round((timeRemaining.minutes * 100) / 60)}
-                format={() => `${timeRemaining.minutes} Min`}
-                strokeColor={"purple"}
-              />
-            </div>
-          </Col>
-        )}
-        <Col lg={4} md={6} sm={12}>
-          {" "}
-          <div style={{ margin: "16px 0" }}>
-            <Progress
-              type="circle"
-              percent={Math.round((timeRemaining.seconds * 100) / 60)}
-              format={() => `${timeRemaining.seconds} Sec`}
-              //   strokeColor={{ "0%": "#108ee9", "100%": "#87d068" }}
-              strokeColor={{ "0%": "#2eb82e", "100%": "green" }}
-            />
-          </div>
-        </Col>
-      </Row>
+    <div style={view === 'Timer' ? style : calendarStyle}>
+      <div style={{ float: 'right' }}>
+        <Radio.Group
+          defaultValue='Timer'
+          buttonStyle='solid'
+          onChange={handleView}
+        >
+          <Radio.Button value='Timer'>Timer</Radio.Button>
+          <Radio.Button value='Calendar'>Calendar </Radio.Button>
+        </Radio.Group>
+      </div>
+
+      <br />
+      <p />
+      {view === 'Timer' ? (
+        <>
+          <h1>🎊2nd Anniversary🎊</h1>.
+          <Row justify={'center'} gutter={12}>
+            {timeRemaining.years > 0 && (
+              <Col lg={4} md={6} sm={12}>
+                <div style={{ margin: '16px 0' }}>
+                  <Progress
+                    type='circle'
+                    percent={Math.round((timeRemaining.years * 100) / 12)}
+                    format={() => `${timeRemaining.years} Years`}
+                  />
+                </div>
+              </Col>
+            )}
+            {timeRemaining.months > 0 && (
+              <Col lg={4} md={6} sm={12}>
+                <div style={{ margin: '16px 0' }}>
+                  <Progress
+                    type='circle'
+                    percent={timeRemaining.months}
+                    format={() => `${timeRemaining.months} Months`}
+                    strokeColor={'#1b6535'}
+                  />
+                </div>
+              </Col>
+            )}
+            {timeRemaining.weeks > 0 && (
+              <Col lg={4} md={6} sm={12}>
+                <div style={{ margin: '16px 0' }}>
+                  <Progress
+                    type='circle'
+                    percent={Math.round((timeRemaining.weeks * 100) / 4)}
+                    format={() => `${timeRemaining.weeks} Weeks`}
+                    strokeColor={'#77c593'}
+                  />
+                </div>
+              </Col>
+            )}
+            {timeRemaining.days > 0 && (
+              <Col lg={4} md={6} sm={12}>
+                <div style={{ margin: '16px 0' }}>
+                  <Progress
+                    type='circle'
+                    percent={Math.round((timeRemaining.days * 100) / 31)}
+                    format={() => `${timeRemaining.days} Days`}
+                    strokeColor={'#3a6b35'}
+                  />
+                </div>
+              </Col>
+            )}
+            {timeRemaining.hours > 0 && (
+              <Col lg={4} md={6} sm={12}>
+                <div style={{ margin: '16px 0' }}>
+                  <Progress
+                    type='circle'
+                    percent={Math.round((timeRemaining.hours * 100) / 24)}
+                    format={() => `${timeRemaining.hours} Hours`}
+                    strokeColor={'pink'}
+                  />
+                </div>
+              </Col>
+            )}
+            {timeRemaining.minutes > 0 && (
+              <Col lg={4} md={6} sm={12}>
+                <div style={{ margin: '16px 0' }}>
+                  <Progress
+                    type='circle'
+                    percent={Math.round((timeRemaining.minutes * 100) / 60)}
+                    format={() => `${timeRemaining.minutes} Min`}
+                    strokeColor={'purple'}
+                  />
+                </div>
+              </Col>
+            )}
+            <Col lg={4} md={6} sm={12}>
+              {' '}
+              <div style={{ margin: '16px 0' }}>
+                <Progress
+                  type='circle'
+                  percent={Math.round((timeRemaining.seconds * 100) / 60)}
+                  format={() => `${timeRemaining.seconds} Sec`}
+                  //   strokeColor={{ "0%": "#108ee9", "100%": "#87d068" }}
+                  strokeColor={{ '0%': '#2eb82e', '100%': 'green' }}
+                />
+              </div>
+            </Col>
+          </Row>
+        </>
+      ) : (
+        <Calendar dateCellRender={dateCellRender} onSelect={onSelect} />
+      )}
     </div>
   );
 };
