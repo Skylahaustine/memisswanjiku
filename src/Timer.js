@@ -14,13 +14,13 @@ const Timer = () => {
     minutes: 0,
     seconds: 0,
   });
-  const [view, setView] = useState('Timer');
+  const [view, setView] = useState('Calendar');
   const [value, setValue] = useState([]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       const currentDate = new Date();
-      const targetDate = new Date('2023-11-29T23:59:59');
+      const targetDate = new Date('2024-04-29T23:59:59');
       const diff = targetDate - currentDate;
 
       if (diff <= 0) {
@@ -71,7 +71,7 @@ const Timer = () => {
     height: '100vh',
     textAlign: 'center',
     backgroundImage: `url(${background})`,
-
+overflow: 'hidden',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   };
@@ -80,6 +80,8 @@ const Timer = () => {
     margin: '3px',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
+    overflow: 'hidden',
+    height: '100vh !important',
   };
   const dateCellRender = (value) => {
     const formattedDate = value.format('YYYY-MM-DD');
@@ -114,7 +116,7 @@ const Timer = () => {
     <div style={view === 'Timer' ? style : calendarStyle}>
       <div style={{ float: 'right' }}>
         <Radio.Group
-          defaultValue='Timer'
+          defaultValue='Calendar'
           buttonStyle='solid'
           onChange={handleView}
         >
@@ -127,7 +129,7 @@ const Timer = () => {
       <p />
       {view === 'Timer' ? (
         <>
-          <h1>🎊2nd Anniversary🎊</h1>.
+          <h1>🌃🌆🏬🚛</h1>.
           <Row justify={'center'} gutter={12}>
             {timeRemaining.years > 0 && (
               <Col lg={4} md={6} sm={12}>
