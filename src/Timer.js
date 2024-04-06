@@ -71,7 +71,7 @@ const Timer = () => {
     height: '100vh',
     textAlign: 'center',
     backgroundImage: `url(${background})`,
-overflow: 'hidden',
+    overflow: 'hidden',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   };
@@ -114,7 +114,7 @@ overflow: 'hidden',
   };
   return (
     <div style={view === 'Timer' ? style : calendarStyle}>
-      <div style={{ float: 'right' }}>
+      {/* <div style={{ float: 'right' }}>
         <Radio.Group
           defaultValue='Calendar'
           buttonStyle='solid'
@@ -123,7 +123,7 @@ overflow: 'hidden',
           <Radio.Button value='Timer'>Timer</Radio.Button>
           <Radio.Button value='Calendar'>Calendar </Radio.Button>
         </Radio.Group>
-      </div>
+      </div> */}
 
       <br />
       <p />
